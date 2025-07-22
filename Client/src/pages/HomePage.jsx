@@ -25,7 +25,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="home-container">
         <h1>Today's Summary</h1>
         <div className="summary-box">

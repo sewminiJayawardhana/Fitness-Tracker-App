@@ -85,7 +85,6 @@ const ProgressPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="progress-container">
         <h1>Weekly Progress</h1>
         <Line options={options} data={data} />
