@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 // Connect MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+
+mongoose.connect(`${process.env.MONGO_URI}/Fitness_tracker`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
