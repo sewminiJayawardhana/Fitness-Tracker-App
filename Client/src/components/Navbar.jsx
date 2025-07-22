@@ -1,35 +1,26 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
-  const { pathname } = useLocation();
-
-  if (pathname === '/') return null; // hide on landing page
+  const location = useLocation();
 
   return (
-    <nav style={styles.nav}>
-      <Link to="/home" style={styles.link}>🏠 Home</Link>
-      <Link to="/log" style={styles.link}>📝 Log</Link>
-      <Link to="/progress" style={styles.link}>📊 Progress</Link>
+    <nav className="navbar">
+      <h2 className="navbar-logo">🏋️‍♀️ FitTrack</h2>
+      <ul className="navbar-links">
+        <li>
+          <Link className={location.pathname === '/home' ? 'active' : ''} to="/home">Home</Link>
+        </li>
+        <li>
+          <Link className={location.pathname === '/log' ? 'active' : ''} to="/log">Log Activity</Link>
+        </li>
+        <li>
+          <Link className={location.pathname === '/progress' ? 'active' : ''} to="/progress">Progress</Link>
+        </li>
+      </ul>
     </nav>
   );
-};
-
-const styles = {
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    padding: '10px',
-    background: '#f0f0f0',
-    borderTop: '1px solid #ccc',
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#333',
-    fontWeight: 'bold',
-  },
 };
 
 export default Navbar;

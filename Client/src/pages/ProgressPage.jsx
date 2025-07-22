@@ -1,47 +1,95 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Line } from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import './ProgressPage.css';
 
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ProgressPage = () => {
   const [weeklyData, setWeeklyData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/weekly')
-      .then(res => setWeeklyData(res.data))
-      .catch(err => console.error(err));
+    const fetchWeeklyData = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/activities/weekly');
+        setWeeklyData(res.data);
+      } catch (err) {
+        console.error('Error fetching weekly data', err);
+      }
+    };
+
+    fetchWeeklyData();
   }, []);
 
-  const summary = {};
-  weeklyData.forEach(act => {
-    const date = new Date(act.date).toLocaleDateString();
-    if (!summary[date]) {
-      summary[date] = { steps: 0, calories: 0 };
-    }
-    summary[date].steps += act.steps || 0;
-    summary[date].calories += act.calories || 0;
-  });
-
-  const labels = Object.keys(summary);
-  const steps = labels.map(d => summary[d].steps);
-  const calories = labels.map(d => summary[d].calories);
+  // Prepare data for chart
+  const labels = weeklyData.map(item => item.date);
+  const stepsData = weeklyData.map(item => item.steps);
+  const caloriesData = weeklyData.map(item => item.calories);
+  const workoutData = weeklyData.map(item => item.workoutMinutes);
 
   const data = {
     labels,
     datasets: [
-      { label: 'Steps', data: steps, borderColor: 'blue', tension: 0.4 },
-      { label: 'Calories', data: calories, borderColor: 'red', tension: 0.4 }
-    ]
+      {
+        label: 'Steps',
+        data: stepsData,
+        borderColor: 'rgba(40, 167, 69, 1)',
+        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+      },
+      {
+        label: 'Calories Burned',
+        data: caloriesData,
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      },
+      {
+        label: 'Workout Minutes',
+        data: workoutData,
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Last 7 Days Fitness Progress',
+      },
+    },
   };
 
   return (
-    <div className="page">
-      <h2>Weekly Progress</h2>
-      <Line data={data} />
+    <div>
       <Navbar />
+      <div className="progress-container">
+        <h1>Weekly Progress</h1>
+        <Line options={options} data={data} />
+      </div>
     </div>
   );
 };

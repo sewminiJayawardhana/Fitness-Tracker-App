@@ -1,29 +1,39 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+import './HomePage.css';
 
 const HomePage = () => {
-  const [activities, setActivities] = useState([]);
+  const [summary, setSummary] = useState({
+    steps: 0,
+    calories: 0,
+    workoutMinutes: 0,
+  });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/daily')
-      .then(res => setActivities(res.data))
-      .catch(err => console.error(err));
+    const fetchSummary = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/activities/summary');
+        setSummary(res.data);
+      } catch (err) {
+        console.error('Error fetching summary', err);
+      }
+    };
+
+    fetchSummary();
   }, []);
 
-  const totalSteps = activities.reduce((sum, a) => sum + (a.steps || 0), 0);
-  const totalCalories = activities.reduce((sum, a) => sum + (a.calories || 0), 0);
-  const totalDuration = activities.reduce((sum, a) => sum + (a.duration || 0), 0);
-
   return (
-    <div className="page">
-      <h2>Today's Summary</h2>
-      <div className="summary-box">
-        <p>🚶‍♂️ Steps: {totalSteps}</p>
-        <p>🔥 Calories: {totalCalories}</p>
-        <p>⏱ Duration: {totalDuration} mins</p>
-      </div>
+    <div>
       <Navbar />
+      <div className="home-container">
+        <h1>Today's Summary</h1>
+        <div className="summary-box">
+          <p><strong>🚶 Steps:</strong> {summary.steps}</p>
+          <p><strong>🔥 Calories Burned:</strong> {summary.calories}</p>
+          <p><strong>⏱ Workout Minutes:</strong> {summary.workoutMinutes}</p>
+        </div>
+      </div>
     </div>
   );
 };

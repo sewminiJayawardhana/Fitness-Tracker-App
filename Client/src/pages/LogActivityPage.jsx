@@ -1,37 +1,88 @@
-import { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+import './LogActivityPage.css';
 
 const LogActivityPage = () => {
-  const [form, setForm] = useState({
-    type: '',
-    duration: '',
-    calories: '',
+  const [formData, setFormData] = useState({
     steps: '',
+    calories: '',
+    workoutMinutes: '',
   });
 
+  const [message, setMessage] = useState('');
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/log', form);
-    alert('Activity logged!');
-    setForm({ type: '', duration: '', calories: '', steps: '' });
+
+    const { steps, calories, workoutMinutes } = formData;
+
+    if (!steps || !calories || !workoutMinutes) {
+      setMessage('Please fill all fields');
+      return;
+    }
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/activities/log', {
+        steps: Number(steps),
+        calories: Number(calories),
+        workoutMinutes: Number(workoutMinutes),
+      });
+
+      setMessage('Activity logged successfully!');
+    } catch (error) {
+      setMessage('Error logging activity.');
+      console.error(error);
+    }
   };
 
   return (
-    <div className="page">
-      <h2>Log Activity</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="type" placeholder="Exercise Type" value={form.type} onChange={handleChange} required />
-        <input type="number" name="duration" placeholder="Duration (mins)" value={form.duration} onChange={handleChange} />
-        <input type="number" name="calories" placeholder="Calories Burned" value={form.calories} onChange={handleChange} />
-        <input type="number" name="steps" placeholder="Steps Taken" value={form.steps} onChange={handleChange} />
-        <button type="submit">Log</button>
-      </form>
+    <div>
       <Navbar />
+      <div className="log-container">
+        <h1>Log Your Activity</h1>
+        <form className="log-form" onSubmit={handleSubmit}>
+          <label>
+            Steps:
+            <input
+              type="number"
+              name="steps"
+              value={formData.steps}
+              onChange={handleChange}
+              min="0"
+            />
+          </label>
+          <label>
+            Calories Burned:
+            <input
+              type="number"
+              name="calories"
+              value={formData.calories}
+              onChange={handleChange}
+              min="0"
+            />
+          </label>
+          <label>
+            Workout Minutes:
+            <input
+              type="number"
+              name="workoutMinutes"
+              value={formData.workoutMinutes}
+              onChange={handleChange}
+              min="0"
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+        {message && <p className="message">{message}</p>}
+      </div>
     </div>
   );
 };
