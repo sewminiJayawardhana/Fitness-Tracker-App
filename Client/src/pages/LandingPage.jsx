@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const LandingPage = () => {
   const navigate = useNavigate();
 
+
   return (
     <div className="landing-container">
-      <h1 className="landing-title">Fitness Tracker App</h1>
-      <p className="landing-subtitle">Track your workouts, steps, and calories with ease</p>
+      <h2 className="landing-title">Empower Your Fitness Journey with Smart Tracking and Real Progress. ⏱</h2>
+      <p className="landing-subtitle">Track your workouts, steps, and calories with ease.All in one place.Stay consistent, stay motivated, and reach your fitness goals faster with real-time insights and a personalized dashboard.🚶</p>
       <button className="landing-button" onClick={() => navigate("/home")}>
-        Swipe Up to Get Started ↑
+        Swipe Up to Get Started 
       </button>
     </div>
   );

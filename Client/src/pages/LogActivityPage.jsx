@@ -45,6 +45,7 @@ const LogActivityPage = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="log-container">
         <h1>Log Your Activity</h1>
         <form className="log-form" onSubmit={handleSubmit}>

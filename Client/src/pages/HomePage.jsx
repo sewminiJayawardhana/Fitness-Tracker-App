@@ -25,12 +25,13 @@ const HomePage = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="home-container">
         <h1>Today's Summary</h1>
         <div className="summary-box">
           <p><strong>🚶 Steps:</strong> {summary.steps}</p>
           <p><strong>🔥 Calories Burned:</strong> {summary.calories}</p>
-          <p><strong>⏱ Workout Minutes:</strong> {summary.workoutMinutes}</p>
+          <p><strong>⏱  Workout Minutes:</strong> {summary.workoutMinutes}</p>
         </div>
       </div>
     </div>

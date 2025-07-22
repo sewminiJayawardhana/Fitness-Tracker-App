@@ -12,12 +12,18 @@
 
 .landing-title {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  font-family: monospace;
+  padding-left: 10%;
+  padding-right:10%;
 }
 
 .landing-subtitle {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .landing-button {
