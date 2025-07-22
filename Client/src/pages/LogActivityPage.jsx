@@ -81,7 +81,7 @@ const LogActivityPage = () => {
           </label>
           <button type="submit">Submit</button>
         </form>
-        {message && <p className="message">{message}</p>}
+        {message && <p className="message">*{message}</p>}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #28a745;
+  background-color: #40f069;
   color: white;
   padding: 1rem 2rem;
   font-family: 'Arial', sans-serif;
@@ -30,4 +30,9 @@
 .navbar-links li a.active,
 .navbar-links li a:hover {
   border-bottom: 2px solid white;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
 }

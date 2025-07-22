@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h2 className="navbar-logo">🏋️‍♀️ FitTrack</h2>
+      <h2 className="navbar-logo" > <img src="iconLogo.png" alt="" />ealth meter</h2>
       <ul className="navbar-links">
         <li>
           <Link className={location.pathname === '/home' ? 'active' : ''} to="/home">Home</Link>
