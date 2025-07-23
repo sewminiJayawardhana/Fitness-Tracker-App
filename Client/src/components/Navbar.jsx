@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi'; // optional icons
 import { useState } from 'react';
+import ChangeTheme from './ChangeTheme';
 
 const Navbar = () => {
   const location = useLocation();
@@ -20,6 +21,12 @@ const Navbar = () => {
         <img src="LetterH.png" alt="Logo" className="w-8 h-8" />
         <span style={{ fontFamily: 'Monospace', paddingTop: '0.5rem' }}>ealth meter</span>
       </h2>
+
+      {/* Theme Toggle Button */}
+      
+    <div className='flex items-center gap-0.1'></div>
+      <ChangeTheme />
+      
 
       {/* Hamburger Button */}
       <button

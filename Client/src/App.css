@@ -1,8 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   background: #f7f7f7;
+  color: black;
   margin: 0;
   padding-bottom: 60px;
+}
+.dark body {
+  background-color: #1a1a1a;
+  color: white;
 }
 
 .page {
