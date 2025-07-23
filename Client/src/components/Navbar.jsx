@@ -19,7 +19,7 @@ const Navbar = () => {
       {/* Logo */}
       <h2 className="flex items-center text-[1.8rem] font-bold tracking-tight">
         <img src="LetterH.png" alt="Logo" className="w-8 h-8" />
-        <span style={{ fontFamily: 'Monospace', paddingTop: '0.5rem' }}>ealth meter</span>
+        <span style={{ fontFamily: 'cursive', paddingTop: '0.5rem' }}>ealth meter</span>
       </h2>
 
       {/* Theme Toggle Button */}

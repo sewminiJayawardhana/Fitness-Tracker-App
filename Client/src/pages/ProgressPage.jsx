@@ -53,19 +53,19 @@ const ProgressPage = () => {
         label: 'Steps',
         data: stepsData,
         borderColor: 'rgba(40, 167, 69, 1)',
-        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+        backgroundColor: 'rgba(40, 167, 69, 1)',
       },
       {
         label: 'Calories Burned',
         data: caloriesData,
         borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 1)',
       },
       {
         label: 'Workout Minutes',
         data: workoutData,
         borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 1)',
       },
     ],
   };
@@ -75,6 +75,10 @@ const ProgressPage = () => {
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+        usePointStyle: true,
+        pointStyle: 'circle',
+      },
       },
       title: {
         display: true,

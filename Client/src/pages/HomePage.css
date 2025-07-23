@@ -1,20 +1,24 @@
 .home-container {
+  position: relative;
   padding: 2rem;
   font-family: Arial, sans-serif;
   min-height: 100vh;
-  background-image: url('../assets/running.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
+
 .home-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.6);
+  background-image: url('../assets/running.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5; 
   z-index: 1;
 }
 
@@ -24,12 +28,16 @@
 }
 
 .summary-box {
-  background-color: #e6ffe6;
+  background-color: rgba(230, 255, 230, 0.8);
+  
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(149, 140, 140, 0.1);
   margin-top: 1rem;
-
+}
+.dark .summary-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
 .summary-box p {
@@ -39,8 +47,10 @@
 }
 h1 {
   color: #333;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   font-family: monospace;
+  font-weight: bold;
   font-size: 2rem;
   text-align: center;
 }

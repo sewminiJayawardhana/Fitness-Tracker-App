@@ -1,6 +1,28 @@
 .progress-container {
+  position: relative;
   padding: 2rem;
   font-family: monospace;
   max-width: 800px;
   margin: 0 auto;
+  min-height: 100vh;
+  overflow: hidden;
+  background: rgba(255,255,255,0.85); /* White overlay for readability */
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.progress-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/running2.jpg'); /* Update with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.22; /* Adjust for desired effect */
+  z-index: 1;
+}
+
+.progress-container > * {
+  position: relative;
+  z-index: 2;
 }
