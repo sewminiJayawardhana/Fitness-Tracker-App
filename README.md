@@ -47,3 +47,37 @@ This app provides:
 - 💾 Backend support with MongoDB
 
 ---
+## 🖥️ UI Screenshots
+
+### 📍 Landing Page
+![Landing Page](./Client/src/assets/landing-page.png)
+
+### 🏠 Home Page
+![Landing Page](./Client/src/assets/Home-page.png)
+
+### 📝 Log Activity Page
+![Log Activity Page](./Client/src/assets/log-activity.png)
+
+### 📊 Progress Summary Page
+![Progress Page](./Client/src/assets/progress-page.png)
+
+### 📊 Navigation bar
+![Navigation Page](./Client/src/assets/navigation-bar.png)
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React.js
+- Tailwind CSS
+- Context API
+- React Router DOM
+
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+
+---
+
