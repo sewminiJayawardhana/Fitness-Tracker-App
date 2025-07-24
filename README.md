@@ -81,3 +81,10 @@ This app provides:
 
 ---
 
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/fitness-tracker-app.git
+cd fitness-tracker-app
+npm install
+npm start
