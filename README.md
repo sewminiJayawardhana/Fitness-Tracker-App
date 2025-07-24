@@ -36,4 +36,14 @@ This app provides:
 - **Dark/light mode** for user comfort
 - An **activity summary** section to visually track daily progress
 
+---
 
+## 🚀 Features
+
+- 📝 Log steps, workout minutes, and calories
+- 📊 Progress page with visual summaries
+- 🌗 Dark/light theme toggle
+- 📱 Mobile responsive UI
+- 💾 Backend support with MongoDB
+
+---
