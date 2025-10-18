@@ -26,7 +26,6 @@ The main purpose of this Fitness Tracker App is to:
 ### ❌ Problem:
 Most existing fitness tracking apps are either:
 - Too complex for beginners
-- Require login or third-party integrations
 - Do not offer customizable logging or UI themes
 
 ### ✅ My Solution:
